@@ -95,13 +95,13 @@ int menu()
  scanf("%d",&ch);
  return ch;
 }
-void main()
+int  main()
 {
 	int ch;
 	for(ch=menu();ch!=4;ch=menu())
 	{
 		switch (ch){
-		
+	
 	    case 1:
 	    	   printf("Enter the element");
 	    	   scanf("%d",&ch);
@@ -117,6 +117,7 @@ void main()
 	    	printf("Invalid choise");
 	   	break;
 	   }
-}
+    }
+ return 0;
 
 }
