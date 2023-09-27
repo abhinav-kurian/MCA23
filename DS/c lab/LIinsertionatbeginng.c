@@ -18,15 +18,10 @@ void insert(int e)
  else
  {
     node *t;
-    t=head;
-    while(t->next!=NULL)
-    {
-        t=t->next;
-        
-    }
-    t->next=(node *)malloc(sizeof(node));
-    t->next->data=e;
-    t->next->next=NULL;
+    t=(node *)malloc(sizeof(node));
+    t->data=e;
+    t->next=head;
+    head=t;
 
  }
 
