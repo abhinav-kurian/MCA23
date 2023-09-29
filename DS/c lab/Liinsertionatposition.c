@@ -46,7 +46,7 @@ void position(int e)
       t=t->next;
 
     }
-    if(t->next == NULL)
+    if(t->next == NULL && t->data!=n)
     {
         printf("Element not found\n");
 

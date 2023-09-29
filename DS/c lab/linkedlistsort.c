@@ -46,17 +46,45 @@ void display()
 
     {
         printf("%d\t",t->data);
+
         t=t->next;
         
     }
 
     }
+    printf("\n");
+}
+void sort()
+{
+    node *t,*d;
+    int i;
+    for(t=head;t!=NULL;t=t->next)
+   {
+    for(d=t->next;d!=NULL;d=d->next)
+    {
+       if(t->data>d->data)
+       {
+        i=t->data;
+        t->data=d->data;
+        d->data=i;
+       }
+    }
+
+   }
+   
 }
 int  main()
 {
+    insert(29);
+    insert(26);
     insert(10);
-    insert(20);
-    insert(23);
+    insert(12);
+    insert(50);
+    insert(8);
     display();
+    sort();
+    printf("after sort\n");
+    display();
+
     return 0;
 }

@@ -32,31 +32,25 @@ void insert(int e)
  }
 
 }
-void display()
+void display(node *t)
 {
-    if(head==NULL)
+    if(t->next!=NULL)
     {
-        printf("Linked list is empty");
-
+        display(t->next);
     }
-    else{
-     node *t;
-    t=head;
-    while(t !=NULL)
-
-    {
-        printf("%d\t",t->data);
-        t=t->next;
-        
-    }
-
-    }
+    
+    printf(" %d ",t->data);
 }
 int  main()
 {
-    insert(10);
-    insert(20);
-    insert(23);
-    display();
-    return 0;
+   int n,i,e;
+   printf("Enter the no. of Elements \n");
+   scanf("%d",&n);
+   for(i=1;i<=n;i++){
+    printf("Enter the element %d\n",i);
+    scanf("%d",&e);
+    insert(e);
+   }
+   printf("The reversed LIinked list is\n ");
+    display(head);
 }
