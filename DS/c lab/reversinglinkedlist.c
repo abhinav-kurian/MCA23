@@ -34,7 +34,7 @@ void insert(int e)
 }
 void display(node *t)
 {
-    if(t->next!=NULL)
+    if(t!=NULL)
     {
         display(t->next);
     }

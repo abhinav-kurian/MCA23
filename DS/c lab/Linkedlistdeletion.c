@@ -90,31 +90,41 @@ void deletelement()
    int e;
    printf("Enter the element to delete");
    scanf("%d",&e);
-   if(head==NULL){
-    printf("linked list is Empty\n");
-   }
-   else if(head->data == e){
 
-      head=head->next;
-      
-   }
-  else{
-   t=head;
-   while(t->next!=NULL  && t->next->data!=e)
-   {
-    t=t->next;
-
-   }
-   if(t->next==NULL)
+    node *t, *prev;
+    if (head == NULL)
     {
-        printf("Enter correct element\n");
+        printf("Linked list is empty\n");
+    }
+    else if (head->data == e )
+    {
+        t = head;
+        head = head->next;
+        free(t);
+    }
+    else
+    {
+        t = head;
+        prev = NULL;
 
-    }
-    else{
-    t->next=t->next->next;
+        while (t != NULL && t->data !=e )
+        {
+            prev = t;
+            t = t->next;
+        }
+
+        if (t == NULL)
+        {
+            printf("Element not found\n");
+        }
+        else
+        {
+            prev->next = t->next;
+            free(t);
+        }
     }
 }
-}
+
 
 int menu()
 {
