@@ -1,52 +1,49 @@
-#include<stdio.h>
-#include<malloc.h>
-struct node{
-     int data;
-     struct node *next;
+#include <stdio.h>
+#include <malloc.h>
+struct node
+{
+    int data;
+    struct node *next;
 };
 typedef struct node node;
 node *head = NULL;
 
 void insert(int e)
 {
- if(head==NULL)
- {
-    head=(node *)malloc(sizeof(node));
-    head->data=e;
-    head->next=NULL;
- }
- else
- {
-    node *t;
-    t=(node *)malloc(sizeof(node));
-    t->data=e;
-    t->next=head;
-    head=t;
-
- }
-
+    if (head == NULL)
+    {
+        head = (node *)malloc(sizeof(node));
+        head->data = e;
+        head->next = NULL;
+    }
+    else
+    {
+        node *t;
+        t = (node *)malloc(sizeof(node));
+        t->data = e;
+        t->next = head;
+        head = t;
+    }
 }
 void display()
 {
-    if(head==NULL)
+    if (head == NULL)
     {
         printf("Linked list is empty");
-
     }
-    else{
-     node *t;
-    t=head;
-    while(t !=NULL)
-
+    else
     {
-        printf("%d\t",t->data);
-        t=t->next;
-        
-    }
+        node *t;
+        t = head;
+        while (t != NULL)
 
+        {
+            printf("%d\t", t->data);
+            t = t->next;
+        }
     }
 }
-int  main()
+int main()
 {
     insert(10);
     insert(20);

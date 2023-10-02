@@ -6,90 +6,84 @@ struct node{
     struct node *prev;
 };
 typedef struct node node;
-struct node *head=NULL;
+node *head;
 void insert(int e)
 {
     if(head==NULL)
     {
         head=(node *)malloc(sizeof(node));
         head->data=e;
-        head->next=NULL;
-        head->prev=NULL;
+        head->next=head; 
+        head->prev=head;        
+    }
+    else{
+    node *t;
+    t=head;
+    while(t->next!=head)
+    {
+        t=t->next;
+    }
+    t->next=(node *)malloc(sizeof(node));
+    t->next->data=e;
+    t->next->next=head;
+    t->next->prev=t;
+    head->prev=t->next;
+    }
+
+}
+void display()
+{
+    if(head==NULL)
+    {
+        printf("Linked list is empty\n");
+
     }
     else{
         node *t;
         t=head;
-        while(t->next!=NULL)
-        {
-            t=t->next;
-
-        }
-        t->next=(node*)malloc(sizeof(node));
-        t->next->data=e;
-        t->next->next=NULL;
-        t->next->prev=t;
-
-    }
-}
-void display()
-{
-    node *t;
-    if(head==NULL)
-    {
-        printf("linked list is empty\n");
-
-    }
-    else{
-        t=head;
-        while(t!=NULL)
-        {
+        do{
             printf("%d\t",t->data);
             t=t->next;
         }
+        while(t != head);
 
-    }
+    }    
 }
 void delete()
 {
-   int e;
-   printf("Enter the element to delete");
-   scanf("%d",&e);
-
-    node *t, *prev;
-    if (head == NULL)
+    int e;
+    printf("\nEnter the element to delete\n");
+    scanf("%d",&e);
+    if(head==NULL)
     {
         printf("Linked list is empty\n");
     }
-   
-    else if (head->data == e )
+    else if( head->data ==e && head->next==head )
     {
-        t = head;
-        head = head->next;
-        if(head != NULL)
-            head->prev=NULL;
-        free(t);
+        head=NULL;
     }
-    else
+    else if(head->data==e && head->next!=head)
     {
-        t = head;
-
-        while (t != NULL && t->data !=e )
+        head->prev->next=head->next;
+        head->next->prev=head->prev;
+        head=head->next;
+    }
+    else{
+        node *t;
+        t=head;
+        t=t->next;
+        while(t != head && t->data != e)
         {
-            t = t->next;
+            t=t->next;
         }
-
-        if (t == NULL)
+        if(t == head )
         {
             printf("Element not found\n");
         }
-        else
-        {
+        else{
+            
             t->prev->next = t->next;
-            if(t->next!=NULL)//condition to check last node
-            {
-              t->next->prev=t->prev;
-              free(t);
-            }
+            t->next->prev=t->prev;
             
         }
     }
@@ -119,10 +113,11 @@ int  main()
         display();
         break;
     case 3:
-        delete();
-        break;
+     delete();
+    break;
     }
    }
 return 0;
 
 }
+
