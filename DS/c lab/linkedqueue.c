@@ -31,15 +31,12 @@ void dequeue()
     if(f==NULL)
     {
         printf("Queue is empty\n");
+        r=NULL;
     }
     else{
         printf("%d",f->data);
         f=f->next;
-        if(f==NULL)
-        {
-            r=NULL;
-
-        }
+        
     }
 }
 int menu()

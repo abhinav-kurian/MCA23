@@ -10,20 +10,13 @@ node *head = NULL;
 
 void insert(int e)
 {
-    if (head == NULL)
-    {
-        head = (node *)malloc(sizeof(node));
-        head->data = e;
-        head->next = NULL;
-    }
-    else
-    {
+   
         node *t;
         t = (node *)malloc(sizeof(node));
         t->data = e;
         t->next = head;
         head = t;
-    }
+    
 }
 void display()
 {

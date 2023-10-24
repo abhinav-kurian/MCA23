@@ -41,12 +41,12 @@ void position(int e)
     printf("\nEnter the element after which new element has to be inserted \n");
     scanf("%d",&n);
     t=head;
-    while(t->next !=NULL && t->data!=n)
+    while(t != NULL && t->data!=n)
     {
       t=t->next;
 
     }
-    if(t->next == NULL && t->data!=n)
+    if(t == NULL )
     {
         printf("Element not found\n");
 

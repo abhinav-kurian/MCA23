@@ -32,9 +32,31 @@ void insert(int e)
  }
 
 }
+// Function to display the linked list in reverse order without using recursion
+void displayReverse(struct node* t) {
+    struct node* current = t;
+    struct node* prev = NULL;
+    struct node* next = NULL;
+
+    while (current != NULL) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+
+    t = prev;
+
+    while (t != NULL) {
+        printf("%d -> ", t->data);
+        t = t->next;
+    }
+    printf("NULL\n");
+}
+
 void display(node *t)
 {
-    if(t!=NULL)
+    if(t->next !=NULL)
     {
         display(t->next);
     }
@@ -53,4 +75,6 @@ int  main()
    }
    printf("The reversed LIinked list is\n ");
     display(head);
+    displayReverse(head);
+  
 }
