@@ -46,12 +46,10 @@ void dequeue()
 int menu()
 {
     int ch;
-    printf("\n Enter the choice \n 1-enqueue \n2-dequeue\n 3- exit\n");
+    printf("\n Enter the choice \n1-enqueue \n2-dequeue\n3- exit\n");
     scanf("%d",&ch);
     return ch;
 }
-
-
 void main()
     {
     int ch , e;
